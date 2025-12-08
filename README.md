@@ -5,6 +5,21 @@ It aims to streamline the entire workshop lifecycle for both organizers and part
 
 ---
 
+## Tech Stack
+
+### Currently Using
+
+- **Backend:** Node.js, Express.js  
+- **Tools:** Git, Postman  
+
+### Planned
+
+- **Frontend:** React, Tailwind CSS, Vite  
+- **Database:** MongoDB  
+- **Authentication:** JWT-based authentication  
+
+---
+
 ## Author
 
 Copyright (c) 2025 [Saptaparno Chakraborty](https://github.com/schak04).  
