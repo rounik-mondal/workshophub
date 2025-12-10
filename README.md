@@ -23,12 +23,12 @@ It aims to streamline the entire workshop lifecycle for both organizers and part
 ### Currently Using
 
 - **Backend:** Node.js, Express.js  
+- **Database:** MongoDB, Mongoose  
 - **Tools:** Postman  
 
 ### Planned
 
 - **Frontend:** React, Tailwind CSS, Vite  
-- **Database:** MongoDB  
 - **Authentication:** JWT-based authentication  
 
 ---
