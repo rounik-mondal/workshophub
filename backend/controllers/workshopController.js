@@ -1,14 +1,64 @@
 const Workshop = require('../models/Workshop');
 const Registration = require('../models/Registration');
 
-// too sleepy rn, will implement in the morning
+const createWorkshop = async (req, res) => {
+    try {
+        const data = req.body;
+        const workshop = await Workshop.create(data);
+        res.status(201).json(workshop);
+    }
+    catch(err) {
+        console.error(err);
+        res.status(500).json({message: "Error creating workshop"});
+    }
+};
 
-const createWorkshop = async (req, res) => {};
+const updateWorkshop = async (req, res) => {
+    try {
+        const updated = await Workshop.findByIdAndUpdate(req.params.id, req.body, {new:true});
+        if (!updated) return res.status(404).json({message: "Error 404: Workshop NOT found"});
+        res.json(updated);
+    }
+    catch (err) {
+        console.error(err);
+        res.status(500).json({message: "Error updating workshop"});
+    }
+};
 
-const updateWorkshop = async (req, res) => {};
+const deleteWorkshop = async (req, res) => {
+    try {
+        const removed = await Workshop.findByIdAndDelete(req.params.id);
+        if (!removed) return res.status(404).json({message: "Error 404: Workshop NOT found"});
+        res.json({message: "Workshop deleted successfullly"});
+    }
+    catch(err) {
+        console.error(err);
+        res.status(500).json({message:"Error deletign workshop"});
+    }
+};
 
-const deleteWorkshop = async (req, res) => {};
+const getWorkshop = async (req, res) => {
+    try {
+        const ws = await Workshop.findById(req.params.id).populate('instructor', 'name email');
+        if (!ws) return res.status(404).json({message: "Error 404: Workshop NOT found"});
+        const registrationCount = await Registration.countDocuments({workshop: ws._id});
+        res.json({workshop: ws, registrations: registrationCount});
+    }
+    catch (err) {
+        console.error(err);
+        res.status(500).json({message:"Error fetching the requested workshop"});
+    }
+};
 
-const getWorkshop = async (req, res) => {};
+const getWorkshops = async (req, res) => {
+    try {
+        const workshops = await Workshop.find().populate('instructor', 'name email role');
+        res.json(workshops);
+    }
+    catch (err) {
+        console.error(err);
+        res.status(500).json({message:"Error fetching workshops"});
+    }
+};
 
-const getWorkshops = async (req, res) => {};
+module.exports = {createWorkshop, updateWorkshop, deleteWorkshop, getWorkshop, getWorkshops};
