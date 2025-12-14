@@ -29,11 +29,11 @@ const deleteWorkshop = async (req, res) => {
     try {
         const removed = await Workshop.findByIdAndDelete(req.params.id);
         if (!removed) return res.status(404).json({message: "Error 404: Workshop NOT found"});
-        res.json({message: "Workshop deleted successfullly"});
+        res.json({message: "Workshop deleted successfully"});
     }
     catch(err) {
         console.error(err);
-        res.status(500).json({message:"Error deletign workshop"});
+        res.status(500).json({message:"Error deleting workshop"});
     }
 };
 
