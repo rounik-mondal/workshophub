@@ -17,7 +17,6 @@ const registerForWorkshop = async (req, res) => {
     }
 };
 
-// admin
 const listRegistrations = async (req, res) => {
     try {
         const filter = {}; // admin can pass ?workshop=<id> to filter
