@@ -1,7 +1,36 @@
 const Registration = require('../models/Registration');
 
-// will implement in the morning
+const registerForWorkshop = async (req, res) => {
+    try {
+        const {workshopId} = req.body;
+        if (!workshopId) return res.status(400).json({message:"Please provide the workshop id as it is required"});
 
-const registerForWorkshop = async (req, res) => {};
+        const alreadyRegistered = await Registration.findOne({workshop: workshopId, user: req.user._id});
+        if (alreadyRegistered) return res.status(400).json({message: "You've already registered for this workshop"});
 
-const listRegistrations = async (req, res) => {};
+        const reg = await Registration.create({workshop: workshopId, user: req.user._id});
+        res.status(201).json(reg);
+    }
+    catch (err) {
+        console.error(err);
+        res.status(500).json({message: "Error registering"});
+    }
+};
+
+// admin
+const listRegistrations = async (req, res) => {
+    try {
+        const filter = {}; // admin can pass ?workshop=<id> to filter
+        if (req.query.workshop) filter.workshop = req.query.workshop;
+        if (req.user.role === 'participant') filter.user = req.user._id;
+
+        const regs = await Registration.find(filter).populate('workshop').populate('user', 'name email');
+        res.json(regs);
+    }
+    catch (err) {
+        console.error(err);
+        res.status(500).json({message: "Error listing registrations"});
+    }
+};
+
+module.exports = {registerForWorkshop, listRegistrations};
