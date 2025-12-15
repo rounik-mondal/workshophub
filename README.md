@@ -25,8 +25,8 @@ It aims to streamline the entire workshop lifecycle for both organizers and part
 
 - **Backend:** Node.js, Express.js  
 - **Database:** MongoDB, **ODM:** Mongoose  
-- **Tools:** Postman  
 - **Authentication:** JWT-based authentication  
+- **Testing Tools:** Postman  
 
 ### Planned
 
