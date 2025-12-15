@@ -5,3 +5,5 @@ const {registerForWorkshop, listRegistrations} = require('../controllers/registr
 
 router.post('/', verifyToken, requireRole('participant'), registerForWorkshop);
 router.get('/', verifyToken, listRegistrations); // handled for participants (can list only their own reg) in the controller
+
+module.exports = router;
