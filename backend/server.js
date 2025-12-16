@@ -28,6 +28,9 @@ app.use('/api/registrations', registrationRoutes);
 app.use('/api/attendance', attendanceRoutes);
 app.use('/api/feedback', feedbackRoutes);
 app.use('/api/certificates', certificateRoutes);
+app.use((req, res) => {
+    res.status(404).json({ message: "Route not found" });
+});
 
 app.use((err, req, res, next) => {
     console.error(err);
