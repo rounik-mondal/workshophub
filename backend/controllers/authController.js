@@ -11,12 +11,13 @@ const signup = async (req, res) => {
         const userExists = await User.findOne({email});
         if (userExists) return res.status(400).json({message: "Email already registered"});
 
+        const allowedRoles = ['participant', 'instructor'];
+        const finalRole = allowedRoles.includes(role) ? role : 'participant';
         const hashedPassword = await bcrypt.hash(password, 10);
-        const user = await User.create({name, email, password: hashedPassword, role: role || 'participant'});
+        const user = await User.create({name, email, password: hashedPassword, role: finalRole});
         const token = jwt.sign({id: user._id}, process.env.JWT_SECRET, {expiresIn: process.env.JWT_EXPIRES_IN || '7d'});
         
         res.status(201).json({message: "User created successfully", user:{id:user._id, name: user.name, email: user.email, role: user.role}, token});
-
     }
     catch (err) {
         console.error(err);
