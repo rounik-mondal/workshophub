@@ -30,7 +30,7 @@ export default function Feedback() {
     };
 
     useEffect(() => {
-        if (user?.role === 'admin') {
+        if (user?.role === 'admin' || user?.role === 'instructor') {
             loadFeedback();
         }
     }, [user]);
@@ -86,7 +86,7 @@ export default function Feedback() {
                         onChange={e => setRating(e.target.value)}
                         required
                     >
-                        <option value=''>Rating (1–5)</option>
+                        <option value=''>Rating (On a scale of 1 to 5)</option>
                         {[1, 2, 3, 4, 5].map(r => (
                             <option key={r} value={r}>{r}</option>
                         ))}
@@ -105,7 +105,7 @@ export default function Feedback() {
                 </form>
             )}
 
-            {user?.role === 'admin' && (
+            {(user?.role === 'admin' || user?.role === 'instructor') && (
                 <>
                     <div className='mb-4 max-w-md'>
                         <select
@@ -113,9 +113,9 @@ export default function Feedback() {
                             onChange={e => loadFeedback(e.target.value)}
                         >
                             <option value=''>All Workshops</option>
-                            {workshops.map(w => (
+                            {workshops.filter(w => user.role === 'admin' || w.instructor?._id === user.id).map(w => (
                                 <option key={w._id} value={w._id}>
-                                    {w.title}
+                                  {w.title}
                                 </option>
                             ))}
                         </select>
@@ -124,6 +124,7 @@ export default function Feedback() {
                     <table className='w-full border'>
                         <thead>
                             <tr className='bg-gray-100'>
+                                <th className='border p-2'>Workshop</th>
                                 <th className='border p-2'>User</th>
                                 <th className='border p-2'>Rating</th>
                                 <th className='border p-2'>Comment</th>
@@ -133,18 +134,11 @@ export default function Feedback() {
                         <tbody>
                             {feedbacks.map(f => (
                                 <tr key={f._id}>
-                                    <td className='border p-2'>
-                                        {f.user?.name}
-                                    </td>
-                                    <td className='border p-2'>
-                                        {f.rating}
-                                    </td>
-                                    <td className='border p-2'>
-                                        {f.comment || '-'}
-                                    </td>
-                                    <td className='border p-2'>
-                                        {new Date(f.createdAt).toLocaleDateString()}
-                                    </td>
+                                    <td className='border p-2'>{f.workshop?.title}</td>
+                                    <td className='border p-2'>{f.user?.name}</td>
+                                    <td className='border p-2'>{f.rating}</td>
+                                    <td className='border p-2'>{f.comment || '-'}</td>
+                                    <td className='border p-2'>{new Date(f.createdAt).toLocaleDateString()}</td>
                                 </tr>
                             ))}
                         </tbody>

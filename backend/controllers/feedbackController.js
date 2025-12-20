@@ -1,4 +1,6 @@
 const Feedback = require('../models/Feedback');
+const Workshop = require('../models/Workshop');
+const mongoose = require('mongoose');
 
 const addFeedback = async (req, res) => {
     try {
@@ -14,11 +16,16 @@ const addFeedback = async (req, res) => {
     }
 };
 
-const listFeedback = async (req, res) => { // feedback -> plural
+const listFeedback = async (req, res) => {
     try {
         const filter = {};
-        if (req.query.workshop) filter.workshop = req.query.workshop;
-        const f = await Feedback.find(filter).populate('user', 'name email');
+        if (req.query.workshop && req.query.workshop !== '') filter.workshop = req.query.workshop;
+        if (req.user.role === 'instructor') {
+            const myWorkshops = await Workshop.find({instructor: req.user._id}).select('_id');
+            const myWorkshopIds = myWorkshops.map(w => w._id);
+            filter.workshop = { $in: myWorkshopIds };
+        }
+        const f = await Feedback.find(filter).populate('user', 'name email').populate('workshop', 'title instructor');
         res.json(f);
     }
     catch (err) {
