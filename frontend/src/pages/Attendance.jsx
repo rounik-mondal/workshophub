@@ -41,9 +41,11 @@ export default function Attendance() {
                 }
                 return [...prev, res.data];
             });
-        } catch (err) {
+        }
+        catch(err) {
             console.error(err);
-            alert("Error marking attendance");
+            const message = err.response?.data?.message || "Error marking attendance";
+            alert(message);
         }
     };
 
