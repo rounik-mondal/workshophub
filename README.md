@@ -26,6 +26,7 @@ It aims to streamline the entire workshop lifecycle for both organizers and part
 - **Database:** MongoDB
 - **ODM:** Mongoose  
 - **Authentication:** JWT-based authentication  
+- **Password Hashing:** Bcrypt (for secure password storage)  
 - **Testing Tools:** Postman  
 - **Frontend:** React, Tailwind CSS, Vite
 
