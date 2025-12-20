@@ -66,7 +66,7 @@ export default function Certificates() {
                     <h2 className='font-semibold mb-4'>Issue Certificate</h2>
 
                     <select
-                        className='border p-2 mb-3 w-full'
+                        className='border p-2 mb-3 w-full bg-gray-900'
                         value={workshop}
                         onChange={e => setWorkshop(e.target.value)}
                         required
@@ -80,7 +80,7 @@ export default function Certificates() {
                     </select>
 
                     <select
-                        className='border p-2 mb-3 w-full'
+                        className='border p-2 mb-3 w-full bg-gray-900'
                         value={userId}
                         onChange={e => setUserId(e.target.value)}
                         required
@@ -110,7 +110,7 @@ export default function Certificates() {
 
             <table className='w-full border'>
                 <thead>
-                    <tr className='bg-gray-100'>
+                    <tr className='bg-amber-800'>
                         <th className='border p-2'>Workshop</th>
                         <th className='border p-2'>User</th>
                         <th className='border p-2'>Issued</th>

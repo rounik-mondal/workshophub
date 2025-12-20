@@ -69,7 +69,7 @@ export default function Materials() {
                     <h2 className='font-semibold mb-4'>Add Material</h2>
 
                     <select
-                        className='border p-2 mb-3 w-full'
+                        className='border p-2 mb-3 w-full bg-gray-900'
                         value={workshop}
                         onChange={e => setWorkshop(e.target.value)}
                         required
@@ -108,7 +108,7 @@ export default function Materials() {
 
             <div className='mb-4 max-w-md'>
                 <select
-                    className='border p-2 w-full'
+                    className='border p-2 w-full bg-gray-900'
                     onChange={e => loadMaterials(e.target.value)}
                 >
                     <option value=''>All Workshops</option>
@@ -122,7 +122,7 @@ export default function Materials() {
 
             <table className='w-full border'>
                 <thead>
-                    <tr className='bg-gray-200'>
+                    <tr className='bg-amber-800'>
                         <th className='border p-2'>Title</th>
                         <th className='border p-2'>Workshop</th>
                         <th className='border p-2'>Uploaded By</th>

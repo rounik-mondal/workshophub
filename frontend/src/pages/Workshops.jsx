@@ -33,7 +33,7 @@ export default function Workshops() {
                     <Link
                         key={ws._id}
                         to={`/workshops/${ws._id}`}
-                        className='border p-4 rounded hover:bg-gray-50'
+                        className='border p-4 rounded hover:bg-green-600'
                     >
                         <h2 className='text-lg font-medium'>{ws.title}</h2>
                         <p className='text-sm text-gray-600'>{ws.venue}</p>

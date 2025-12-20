@@ -69,7 +69,7 @@ export default function Attendance() {
             <h1 className='text-2xl font-semibold mb-4'>Manage Attendance</h1>
 
             <select
-                className='border p-2 mb-6 w-full max-w-md'
+                className='border p-2 mb-6 w-full max-w-md bg-gray-900'
                 value={selectedWorkshop}
                 onChange={e => setSelectedWorkshop(e.target.value)}
             >
@@ -93,10 +93,10 @@ export default function Attendance() {
                 <table className='w-full border'>
                     <thead>
                         <tr className='bg-gray-100'>
-                            <th className='border p-2'>Name</th>
-                            <th className='border p-2'>Email</th>
-                            <th className='border p-2'>Status</th>
-                            <th className='border p-2'>Action</th>
+                            <th className='border p-2 bg-amber-800'>Name</th>
+                            <th className='border p-2 bg-amber-800'>Email</th>
+                            <th className='border p-2 bg-amber-800'>Status</th>
+                            <th className='border p-2 bg-amber-800'>Action</th>
                         </tr>
                     </thead>
                     <tbody>
