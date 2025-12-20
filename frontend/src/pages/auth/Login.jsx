@@ -15,7 +15,7 @@ export default function Login() {
             await login(form);
             navigate('/');
         } catch (error) {
-            console.error('Login failed:', error);
+            console.error("Login failed:", error);
         } finally {
             setLoading(false);
         }
@@ -36,7 +36,7 @@ export default function Login() {
                         </label>
                         <input
                             type='email'
-                            placeholder='Enter your email'
+                            placeholder="Enter your email"
                             className='input w-full'
                             value={form.email}
                             onChange={e => setForm({...form, email: e.target.value})}
@@ -50,7 +50,7 @@ export default function Login() {
                         </label>
                         <input
                             type='password'
-                            placeholder='Enter your password'
+                            placeholder="Enter your password"
                             className='input w-full'
                             value={form.password}
                             onChange={e => setForm({...form, password: e.target.value})}
@@ -63,7 +63,7 @@ export default function Login() {
                         className='btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed'
                         disabled={loading}
                     >
-                        {loading ? 'Signing In...' : 'Sign In'}
+                        {loading ? "Signing In..." : "Sign In"}
                     </button>
                 </form>
 

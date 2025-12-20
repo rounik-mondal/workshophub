@@ -42,7 +42,7 @@ export default function Register() {
                         </label>
                         <input
                             type='text'
-                            placeholder='Enter your full name'
+                            placeholder="Enter your full name"
                             className='input w-full'
                             value={form.name}
                             onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -56,7 +56,7 @@ export default function Register() {
                         </label>
                         <input
                             type='email'
-                            placeholder='Enter your email'
+                            placeholder="Enter your email"
                             className='input w-full'
                             value={form.email}
                             onChange={(e) => setForm({ ...form, email: e.target.value })}
@@ -70,7 +70,7 @@ export default function Register() {
                         </label>
                         <input
                             type='password'
-                            placeholder='Create a password'
+                            placeholder="Create a password"
                             className='input w-full'
                             value={form.password}
                             onChange={(e) => setForm({ ...form, password: e.target.value })}
@@ -97,7 +97,7 @@ export default function Register() {
                         className='btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed'
                         disabled={loading}
                     >
-                        {loading ? 'Creating Account...' : 'Create Account'}
+                        {loading ? "Creating Account..." : "Create Account"}
                     </button>
                 </form>
 
