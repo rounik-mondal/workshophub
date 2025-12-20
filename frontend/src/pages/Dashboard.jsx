@@ -51,6 +51,15 @@ export default function Dashboard() {
                                 </div>
                                 <p className='text-gray-400'>View your earned certificates</p>
                             </Link>
+                            <Link className='card hover:border-indigo-500 transition-all duration-300 group' to='/registrations'>
+                                <div className='flex items-center mb-3'>
+                                    <div className='w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center mr-3 group-hover:bg-indigo-500 transition-colors duration-200'>
+                                        <span className='text-white font-bold'>R</span>
+                                    </div>
+                                    <h3 className='text-xl font-semibold text-gray-100'>My Registrations</h3>
+                                </div>
+                                <p className='text-gray-400'>View and manage your workshop registrations</p>
+                            </Link>
                             <Link className='card hover:border-yellow-500 transition-all duration-300 group' to='/feedback'>
                                 <div className='flex items-center mb-3'>
                                     <div className='w-10 h-10 bg-yellow-600 rounded-lg flex items-center justify-center mr-3 group-hover:bg-yellow-500 transition-colors duration-200'>

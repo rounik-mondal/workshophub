@@ -24,6 +24,18 @@ export default function Registrations() {
         fetchRegistrations();
     }, []);
 
+    const handleUnregister = async (registrationId) => {
+        try {
+            await api.put(`/registrations/${registrationId}/unregister`);
+            setRegistrations(registrations.map(reg => 
+                reg._id === registrationId ? {...reg, status: 'cancelled'} : reg
+            ));
+        } catch (err) {
+            console.error(err);
+            setError("Failed to unregister");
+        }
+    };
+
     if (loading) return <p className='p-6'>Loading...</p>;
     if (error) return <p className='p-6 text-red-600'>{error}</p>;
 
@@ -60,6 +72,15 @@ export default function Registrations() {
                                 Registered on:{' '}
                                 {new Date(reg.createdAt).toLocaleDateString()}
                             </p>
+
+                            {user.role === 'participant' && reg.status === 'registered' && (
+                                <button 
+                                    onClick={() => handleUnregister(reg._id)}
+                                    className='btn-danger mt-2'
+                                >
+                                    Unregister
+                                </button>
+                            )}
                         </div>
                     ))}
                 </div>

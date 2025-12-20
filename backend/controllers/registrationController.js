@@ -32,4 +32,20 @@ const listRegistrations = async (req, res) => {
     }
 };
 
-module.exports = {registerForWorkshop, listRegistrations};
+const unregisterFromWorkshop = async (req, res) => {
+    try {
+        const {registrationId} = req.params;
+        const reg = await Registration.findOneAndUpdate(
+            {_id: registrationId, user: req.user._id, status: 'registered'},
+            {status: 'cancelled'},
+            {new: true}
+        );
+        if (!reg) return res.status(404).json({message: "Registration not found or already cancelled"});
+        res.json({message: "Unregistered successfully", reg});
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({message: "Error unregistering"});
+    }
+};
+
+module.exports = {registerForWorkshop, listRegistrations, unregisterFromWorkshop};
