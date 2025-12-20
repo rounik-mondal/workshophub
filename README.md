@@ -14,7 +14,8 @@
 </p>
 <!-- markdownlint-enable MD033 -->
 
-This project is a full-stack web application designed to manage learning/educational workshops, including registrations, attendance, material requirements, feedback collection, and certificate generation.  
+This project is a full-stack web application designed to manage learning/educational workshops.  
+The system handles workshop creation, registrations, attendance tracking, feedback collection, and certificate generation while enforcing strict role-based access control.  
 It aims to streamline the entire workshop lifecycle for both organizers and participants.
 
 ---
@@ -26,7 +27,45 @@ It aims to streamline the entire workshop lifecycle for both organizers and part
 - **ODM:** Mongoose  
 - **Authentication:** JWT-based authentication  
 - **Testing Tools:** Postman  
-- **Frontend:** React, Tailwind CSS, Vite  
+- **Frontend:** React, Tailwind CSS, Vite
+
+---
+
+## Key Features
+
+- Role-based authentication and authorization
+- Workshop creation and management
+- Secure workshop registration and unregistration
+- Attendance tracking with instructor-level restrictions
+- Feedback system with access control
+- Certificate generation for completed workshops
+- Clean and responsive user interface
+- RESTful API architecture
+
+---
+
+## User Roles & Permissions (current; may be updated in future versions)
+
+### Admin
+
+- Create, update, delete, and view workshops
+- Assign instructors to workshops (during workshop creation)
+- Manage attendance across all workshops
+- View feedback submitted for all workshops
+
+### Instructor
+
+- View workshops
+- Manage attendance only for their own workshops
+- View feedback only for their own workshops
+
+### Participant
+
+- View workshops
+- Register for workshops
+- View their registrations
+- Unregister from workshops
+- Submit feedback for workshops
 
 ---
 
