@@ -14,7 +14,10 @@ export default function Navbar() {
                 {user ? (
                     <>
                         <Link to='/workshops' className='link font-medium'>Workshops</Link>
+                        <Link to='/registrations' className='link font-medium'>Registrations</Link>
+                        <Link to='/attendance' className='link font-medium'>Attendance</Link>
                         <Link to='/materials' className='link font-medium'>Materials</Link>
+                        <Link to='/feedback' className='link font-medium'>Feedback</Link>
                         <Link to='/certificates' className='link font-medium'>Certificates</Link>
 
                         <button
