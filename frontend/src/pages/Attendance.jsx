@@ -69,7 +69,7 @@ export default function Attendance() {
             <h1 className='text-2xl font-semibold mb-4'>Manage Attendance</h1>
 
             <select
-                className='input border p-2 mb-6 w-full max-w-md'
+                className='input max-w-md'
                 value={selectedWorkshop}
                 onChange={e => setSelectedWorkshop(e.target.value)}
             >
