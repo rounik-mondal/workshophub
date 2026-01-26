@@ -5,13 +5,13 @@ export default function Navbar() {
     const {user, logout} = useAuth();
 
     return (
-        <nav className='flex justify-between items-center px-6 py-4 bg-gray-800 border-b border-gray-700 shadow-lg'>
-            <Link to='/' className='font-bold text-2xl text-yellow-500 hover:text-blue-400 transition-colors duration-200'>
+        <nav className='flex justify-between items-center px-6 py-4 bg-gray-900 border-b border-gray-800 shadow-lg'>
+            <Link to='/' className='font-bold text-2xl text-yellow-500 hover:text-teal-400 transition-colors duration-200'>
                 WorkshopHub
             </Link>
 
             <div className='flex gap-6 items-center'>
-                {user ? (
+                {user && user.role!=='participant' ? (
                     <>
                         <Link to='/workshops' className='link font-medium'>Workshops</Link>
                         <Link to='/registrations' className='link font-medium'>Registrations</Link>
@@ -27,10 +27,27 @@ export default function Navbar() {
                             Logout
                         </button>
                     </>
-                ) : (
+                )
+                : user && user.role==='participant' ? (
                     <>
-                        <Link to='/login' className='link font-medium'>Login</Link>
-                        <Link to='/signup' className='link font-medium'>Register</Link>
+                        <Link to='/workshops' className='link font-medium'>Workshops</Link>
+                        <Link to='/registrations' className='link font-medium'>Registrations</Link>
+                        <Link to='/materials' className='link font-medium'>Materials</Link>
+                        <Link to='/feedback' className='link font-medium'>Feedback</Link>
+                        <Link to='/certificates' className='link font-medium'>Certificates</Link>
+
+                        <button
+                            onClick={logout}
+                            className='btn-danger'
+                        >
+                            Logout
+                        </button>
+                    </>
+                ) 
+                : (
+                    <>
+                        <Link to='/login' className='btn-secondary font-medium'>Login</Link>
+                        <Link to='/signup' className='btn-secondary font-medium'>Register</Link>
                     </>
                 )}
             </div>
