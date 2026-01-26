@@ -46,6 +46,19 @@ It aims to streamline the entire workshop lifecycle for both organizers and part
 
 ---
 
+## System Design
+
+### System Architecture
+![System Architecture Diagram](docs/diagrams/system-architecture-diagram.png)
+
+### UML Use Case Diagram
+![UML Use Case Diagram](docs/diagrams/use-case-diagram.png)
+
+### Entity Relationship (ER) Diagram
+![ER Diagram](docs/diagrams/er-diagram.png)
+
+---
+
 ## User Roles & Permissions (current; may be updated in future versions)
 
 ### Admin
