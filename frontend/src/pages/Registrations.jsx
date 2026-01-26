@@ -54,21 +54,21 @@ export default function Registrations() {
                     {registrations.map(reg => (
                         <div
                             key={reg._id}
-                            className='border p-4 rounded'
+                            className='card border p-4 rounded'
                         >
                             <h2 className='text-lg font-medium'>
                                 {reg.workshop?.title}
                             </h2>
 
-                            <p className='text-sm text-gray-600'>
+                            <p className='text-sm text-gray-400'>
                                 Participant: {reg.user?.name} ({reg.user?.email})
                             </p>
 
-                            <p className='text-sm text-gray-600'>
+                            <p className='text-sm text-gray-400'>
                                 Status: <strong>{reg.status}</strong>
                             </p>
 
-                            <p className='text-sm text-gray-600'>
+                            <p className='text-sm text-gray-400'>
                                 Registered on:{' '}
                                 {new Date(reg.createdAt).toLocaleDateString()}
                             </p>
