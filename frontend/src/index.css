@@ -1,49 +1,118 @@
 @import 'tailwindcss';
 
-@layer base {
-    html {
-        @apply bg-black text-white;
-    }
+@tailwind utilities;
+/* index.css or wherever you have your @theme */
+@theme {
+  --color-gold: #FFD700;
+}
 
-    button {
-        @apply cursor-pointer;
-    }
+@layer base {
+  html {
+    @apply bg-[#0f0c1f] text-gray-200; /* deep purple-black background */
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply antialiased;
+  }
+
+  button {
+    @apply cursor-pointer;
+  }
+
+  /* Custom gold color utility */
+  .text-gold {
+    color: #FFD700;
+  }
+  .bg-gold {
+    background-color: #FFD700;
+  }
+  .border-gold {
+    border-color: #FFD700;
+  }
 }
 
 @layer components {
-    .btn-primary {
-        @apply bg-teal-400 hover:bg-teal-500 active:bg-teal-600 text-black hover:text-white active:text-white px-4 py-2 rounded-lg font-medium transition-all duration-200 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl;
-    }
+  /* Premium buttons */
+  .btn-primary {
+    @apply bg-gradient-to-r from-gold to-amber-400 text-gray-900 font-semibold px-5 py-3 rounded-xl shadow-lg hover:shadow-gold/20 transform hover:scale-105 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
 
-    .btn-secondary {
-        @apply bg-yellow-600 hover:bg-yellow-700 active:bg-yellow-800 text-black hover:text-white active:text-white px-4 py-2 rounded-lg font-medium transition-all duration-200 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl;
-    }
+  .btn-secondary {
+    @apply border border-gold/30 text-gray-300 px-5 py-3 rounded-xl hover:bg-gold/10 hover:border-gold transition duration-300;
+  }
 
-    .btn-danger {
-        @apply bg-red-600 hover:bg-red-700 active:bg-red-800 text-black hover:text-white active:text-white px-4 py-2 rounded-lg font-medium transition-all duration-200 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl;
-    }
+  .btn-danger {
+    @apply bg-gradient-to-r from-red-500 to-red-600 text-white px-5 py-3 rounded-xl shadow-lg hover:shadow-red-500/30 transform hover:scale-105 transition duration-300;
+  }
 
-    .input {
-        @apply bg-black border border-gray-700 text-gray-100 w-full cursor-pointer p-2 mb-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all duration-200;
-    }
+  /* Glass card */
+  .card {
+    @apply backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl shadow-2xl p-8;
+  }
 
-    .card {
-        @apply bg-gray-900 border border-gray-800 rounded-xl p-6 transition-all duration-300;
-    }
+  /* Premium input fields */
+  .input {
+    @apply w-full px-5 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-transparent transition duration-300;
+  }
 
-    .table {
-        @apply w-full text-center rounded-xl;
-    }
+  /* Table styling */
+  .table {
+    @apply w-full text-center border-collapse;
+  }
 
-    .table th {
-        @apply bg-yellow-800 px-4 py-3 text-center font-semibold;
-    }
+  .table th {
+    @apply bg-gold/20 text-gold font-semibold px-4 py-3 border border-white/10;
+  }
 
-    .table td {
-        @apply border border-gray-600 px-4 py-3 text-center;
-    }
+  .table td {
+    @apply border border-white/10 px-4 py-3 text-gray-300;
+  }
 
-    .link {
-        @apply text-teal-400 hover:text-yellow-500 transition-colors duration-400;
-    }
+  /* Links */
+  .link {
+    @apply text-gold hover:text-amber-300 transition-colors duration-200;
+  }
+
+  /* Custom animations */
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+}
+
+@layer utilities {
+  /* Hide scrollbar for horizontal nav */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@keyframes blob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.animate-slideIn {
+  animation: slideIn 0.3s ease-out;
 }

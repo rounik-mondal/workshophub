@@ -15,16 +15,19 @@ const addMaterial = async (req, res) => {
 };
 
 const listMaterials = async (req, res) => {
-    try {
-        const filter = {};
-        if (req.query.workshop) filter.workshop = req.query.workshop;
-        const materials = await Material.find(filter).populate('uploaded_by', 'name email');
-        res.json(materials);
-    }
-    catch (err) {
-        console.error(err);
-        res.status(500).json({message: "Error fetching materials"});
-    }
+  try {
+    const filter = {};
+    if (req.query.workshop) filter.workshop = req.query.workshop;
+
+    const materials = await Material.find(filter)
+      .populate('workshop', 'title') // 🔥 ADD THIS
+      .populate('uploaded_by', 'name email');
+
+    res.json(materials);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Error fetching materials" });
+  }
 };
 
 module.exports = {addMaterial, listMaterials};

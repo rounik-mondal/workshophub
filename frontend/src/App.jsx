@@ -19,6 +19,8 @@ import Attendance from './pages/Attendance';
 import Feedback from './pages/Feedback';
 import Certificates from './pages/Certificates';
 
+import AppToaster from './components/Toaster';
+
 export default function App() {
     return (
         <AuthProvider>
@@ -120,6 +122,8 @@ export default function App() {
                     <Footer />
                 </div>
             </BrowserRouter>
+            <AppToaster />
         </AuthProvider>
+
     );
 }
